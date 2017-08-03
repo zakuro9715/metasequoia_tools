@@ -3,6 +3,7 @@ $output = "."  # 出力フォルダ
 
 $mode = "obj" # 出力ファイルの種類
 
+Add-Type -AssemblyName 'System.Windows.Forms'
 
 $absoluteOutputPath = Resolve-Path $output
 $items = Get-ChildItem -Recurse -Name -Filter "*.${ext}"
@@ -24,4 +25,6 @@ foreach($item in $items)
   [System.Windows.Forms.SendKeys]::SendWait("{ENTER}") # OK
   [System.Windows.Forms.SendKeys]::SendWait("%f")  # ファイル
   [System.Windows.Forms.SendKeys]::SendWait("%x")  # 閉じる
+
+  Start-Sleep -s 3
 }
